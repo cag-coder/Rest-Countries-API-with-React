@@ -23,6 +23,7 @@ class Country extends Component{
                console.log(response.data)
                 this.setState({post : response.data})
             })
+            
             .catch((error) =>{
                 console.log(error)
             })
@@ -44,6 +45,7 @@ class Country extends Component{
             title={el.name}
             flag={el.flag}
             region ={el.region}
+            
             />
         })
 
