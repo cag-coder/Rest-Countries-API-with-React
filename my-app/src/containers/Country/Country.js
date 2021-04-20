@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import axios from "axios"
+import classes from "./Country.module.css"
 import Countries from "../../components/Countries/Countries"
 class Country extends Component{
     state={
@@ -19,7 +20,7 @@ class Country extends Component{
        
         axios.get(`https://restcountries.eu/rest/v2/name/${this.state.countryName}`)
             .then(response =>{
-               
+               console.log(response.data)
                 this.setState({post : response.data})
             })
             .catch((error) =>{
@@ -38,14 +39,21 @@ class Country extends Component{
     render(){
 
         const countries =this.state.post.map(el =>{
-            return <Countries key={2} title={el.name}/>
+            return <Countries 
+            key={2} 
+            title={el.name}
+            flag={el.flag}
+            region ={el.region}
+            />
         })
 
         return(
-            <div className="App">
-                <h1>Write a Country Name</h1>
-                <input type="text" value={this.state.valueName} onChange={(e) => this.inputCountry(e)} />
+            <div className={classes.Country}>
+                <h1 className={classes.Title}>Write a Country Name</h1>
+                <div className={classes.Search }>
+                <input type="text" value={this.state.valueName} placeholder={"Enter a country name"}onChange={(e) => this.inputCountry(e)} />
                 <button onClick={this.getCountries}>Find a country</button>
+                </div>
                 {countries}
             </div>
         )

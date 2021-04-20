@@ -1,0 +1,37 @@
+.Country{
+    text-align: center;
+    padding: 2rem;
+    height: 30vh;
+    background-color:coral;
+    width: 100%;
+
+}
+
+.Title{
+    margin-bottom: 2rem;
+    text-transform:uppercase;
+
+}
+
+.Search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.Search button{
+    padding: 1rem 1.5rem;
+    margin-left: 1rem;
+    border: none;
+    background-color: cornflowerblue;
+    color: aliceblue;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.Search input{
+    padding:0.5rem;
+    font-size: 1.4rem;
+    border: none;
+}
