@@ -7,8 +7,9 @@ class Countries extends Component{
             <div className={classes.Countries}>
                 <img src={this.props.flag} alt="image" />
                 <div className={classes.Info}>
-                    <h1>{this.props.title}</h1>
-                    <h4>{this.props.region}</h4>
+                    <h1>Country: {this.props.title}</h1>
+                    <h1>Region: {this.props.region}</h1>
+                    <h1>Capital: {this.props.capital}</h1>
                 </div>
             </div>
         )

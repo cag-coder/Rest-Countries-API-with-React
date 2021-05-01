@@ -6,7 +6,8 @@ class Country extends Component{
     state={
         valueName:"",
         countryName: "Turkey",
-        post:[]
+        post:[],
+        error: false
     }    
 
     componentDidMount(){    
@@ -21,11 +22,13 @@ class Country extends Component{
         axios.get(`https://restcountries.eu/rest/v2/name/${this.state.countryName}`)
             .then(response =>{
                console.log(response.data)
-                this.setState({post : response.data})
+                this.setState({
+                    error: false,
+                    post : response.data
+                })
             })
-            
-            .catch((error) =>{
-                console.log(error)
+            .catch(error =>{
+                this.setState({error : true})
             })
     }
 
@@ -38,25 +41,29 @@ class Country extends Component{
     
 
     render(){
+        let posts= <p style={{textAlign: "center", marginTop:" 10rem", fontSize: "2rem"}}>No country available with this name !</p>
 
-        const countries =this.state.post.map(el =>{
-            return <Countries 
-            key={2} 
-            title={el.name}
-            flag={el.flag}
-            region ={el.region}
-            
-            />
-        })
+        if(!this.state.error){
+            posts =this.state.post.map(el =>{
+                return <Countries 
+                key={2} 
+                title={el.name}
+                flag={el.flag}
+                region ={el.region}
+                capital = {el.capital}
+                />
+            })
+        }
+        
 
         return(
             <div className={classes.Country}>
                 <h1 className={classes.Title}>Write a Country Name</h1>
                 <div className={classes.Search }>
-                <input type="text" value={this.state.valueName} placeholder={"Enter a country name"}onChange={(e) => this.inputCountry(e)} />
-                <button onClick={this.getCountries}>Find a country</button>
+                    <input type="text" value={this.state.valueName} placeholder={"Enter a country name"}onChange={(e) => this.inputCountry(e)} />
+                    <button onClick={this.getCountries}>Find a country</button>
                 </div>
-                {countries}
+                {posts}
             </div>
         )
     }

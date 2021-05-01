@@ -4,7 +4,6 @@
     height: 30vh;
     background-color:coral;
     width: 100%;
-
 }
 
 .Title{
@@ -34,4 +33,8 @@
     padding:0.5rem;
     font-size: 1.4rem;
     border: none;
+}
+
+.Information{
+    display: none;
 }
