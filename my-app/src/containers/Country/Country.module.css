@@ -29,10 +29,15 @@
     cursor: pointer;
 }
 
+.Search button:active {
+  transform: translateY(4px);
+}
+
 .Search input{
     padding:0.5rem;
     font-size: 1.4rem;
     border: none;
+    outline: none;
 }
 
 .Information{
